@@ -1,4 +1,4 @@
-package test.com.hideoushumpbackfreak.turingmachine;
+package com.hideoushumpbackfreak.turingmachine;
 
 import com.hideioushumpbackfreak.turningmachine.Head;
 import com.hideioushumpbackfreak.turningmachine.HeadDirection;
