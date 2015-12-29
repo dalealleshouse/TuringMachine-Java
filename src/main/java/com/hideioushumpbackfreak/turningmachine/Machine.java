@@ -1,16 +1,15 @@
 package com.hideioushumpbackfreak.turningmachine;
 
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+
 import java.util.Optional;
 
-public class Machine {
-
+public final class Machine {
     private final int state;
     private final Head head;
-    private final List<Transition> transitionTable;
+    private final ImmutableSet<Transition> transitionTable;
 
-    public Machine(int state, Head head, List<Transition> transitionTable) {
-
+    public Machine(int state, Head head, ImmutableSet<Transition> transitionTable) {
         this.state = state;
         this.head = head;
         this.transitionTable = transitionTable;

@@ -1,6 +1,6 @@
 package com.hideioushumpbackfreak.turningmachine;
 
-public class Transition {
+public final class Transition {
     private final int initialState;
     private final char read;
     private final char write;
@@ -33,5 +33,29 @@ public class Transition {
 
     public int getNextState() {
         return nextState;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Transition that = (Transition) o;
+
+        return initialState == that.initialState &&
+                read == that.read &&
+                write == that.write &&
+                nextState == that.nextState &&
+                headDirection == that.headDirection;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = initialState;
+        result = 31 * result + (int) read;
+        result = 31 * result + (int) write;
+        result = 31 * result + headDirection.hashCode();
+        result = 31 * result + nextState;
+        return result;
     }
 }

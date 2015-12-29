@@ -85,7 +85,7 @@ public class MachineTest {
         Machine sut = new Machine(
                 0,
                 new Head(new char[]{'1', '1', '1', BLANK_SYMBOL, '1', '1'}, 0),
-                TransitionTableGenerator.Multiplication());
+                TransitionTableGenerator.multiplication());
 
         Machine result = sut.run();
         assertEquals(expected, result.getHead().toString());

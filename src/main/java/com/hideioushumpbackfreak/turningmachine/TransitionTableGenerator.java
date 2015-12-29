@@ -1,13 +1,12 @@
 package com.hideioushumpbackfreak.turningmachine;
 
-import java.util.Arrays;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 
 import static com.hideioushumpbackfreak.turningmachine.Head.BLANK_SYMBOL;
 
 public class TransitionTableGenerator {
-    public static List<Transition> addition() {
-        return Arrays.asList(
+    public static ImmutableSet<Transition> addition() {
+        return ImmutableSet.of(
                 new Transition(0, BLANK_SYMBOL, BLANK_SYMBOL, HeadDirection.Right, 0),
                 new Transition(0, '1', '1', HeadDirection.Right, 1),
                 new Transition(1, BLANK_SYMBOL, '1', HeadDirection.Right, 2),
@@ -21,8 +20,8 @@ public class TransitionTableGenerator {
         );
     }
 
-    public static List<Transition> Multiplication() {
-        return Arrays.asList(
+    public static ImmutableSet<Transition> multiplication() {
+        return ImmutableSet.of(
                 new Transition(0, BLANK_SYMBOL, BLANK_SYMBOL, HeadDirection.Right, 1),
                 new Transition(0, '1', BLANK_SYMBOL, HeadDirection.Right, 2),
                 new Transition(1, BLANK_SYMBOL, BLANK_SYMBOL, HeadDirection.Right, 14),

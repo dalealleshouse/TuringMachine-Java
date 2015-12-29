@@ -2,7 +2,7 @@ package com.hideioushumpbackfreak.turningmachine;
 
 import java.util.stream.IntStream;
 
-public class Head {
+public final class Head {
     public static final char BLANK_SYMBOL = '_';
     private final char[] tape;
     private final int headPosition;
