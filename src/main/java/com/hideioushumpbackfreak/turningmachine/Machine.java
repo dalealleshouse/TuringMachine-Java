@@ -2,7 +2,7 @@ package com.hideioushumpbackfreak.turningmachine;
 
 import com.google.common.collect.ImmutableSet;
 
-import java.util.Optional;
+import static java.util.Objects.requireNonNull;
 
 public final class Machine {
     private final int state;
@@ -10,6 +10,9 @@ public final class Machine {
     private final ImmutableSet<Transition> transitionTable;
 
     public Machine(int state, Head head, ImmutableSet<Transition> transitionTable) {
+        requireNonNull(head);
+        requireNonNull(transitionTable);
+
         this.state = state;
         this.head = head;
         this.transitionTable = transitionTable;
@@ -46,14 +49,15 @@ public final class Machine {
     }
 
     private Transition getNextTransition() {
-        Optional<Transition> maybe = this.transitionTable
+        return this.transitionTable
                 .stream()
-                .filter(t -> t.getInitialState() == this.getState() && t.getRead() == this.getHead().read())
-                .findFirst();
+                .filter(this::isNextTransition)
+                .findFirst()
+                .orElse(this.errorTransition());
+    }
 
-        return maybe.isPresent() ?
-                maybe.get() :
-                this.errorTransition();
+    private boolean isNextTransition(Transition t) {
+        return t.getInitialState() == this.getState() && t.getRead() == this.getHead().read();
     }
 
     private Transition errorTransition() {

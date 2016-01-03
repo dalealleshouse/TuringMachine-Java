@@ -1,5 +1,7 @@
 package com.hideioushumpbackfreak.turningmachine;
 
+import static java.util.Objects.requireNonNull;
+
 public final class Transition {
     private final int initialState;
     private final char read;
@@ -8,6 +10,8 @@ public final class Transition {
     private final int nextState;
 
     public Transition(int initialState, char read, char write, HeadDirection headDirection, int nextState) {
+        requireNonNull(headDirection);
+
         this.initialState = initialState;
         this.read = read;
         this.write = write;
@@ -57,5 +61,16 @@ public final class Transition {
         result = 31 * result + headDirection.hashCode();
         result = 31 * result + nextState;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Transition{" +
+                "initialState=" + initialState +
+                ", read=" + read +
+                ", write=" + write +
+                ", headDirection=" + headDirection +
+                ", nextState=" + nextState +
+                '}';
     }
 }
